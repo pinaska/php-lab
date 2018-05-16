@@ -12,3 +12,5 @@ What you need to do to complete this lab:
 * Format the post data as per the design comp (e.g. posts will be displayed in reverse chronological order, categories name will be capitalized, and dates will be converted from Unix time to human-readable time)
 * Abstract the functions you create into a functions.php file, and require it where needed (views are dumb…we don’t want any logic in our views!)
 * Adequately reflect the designer’s vision for this site
+![blog-home-page-two-columns-layout]('home.png');
+![blog-about-page-two-column-layout]('about.png')

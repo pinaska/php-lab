@@ -3,17 +3,15 @@
         $spaceBlogArray = json_decode($spaceBlog, true);
 
 
-    //sort posts by dates, descending
-    function compareDate($a, $b){
-    {
-        if ($a['post_date'] == $b['post_date']) {
-            return 0;
-        }
-        return ($a['post_date'] > $b['post_date']) ? -1 : 1;
-    }
+    //sort posts by dates, descending, comparing tring aka bubble sort, check out http://php.net/manual/en/function.strcmp.php (binary safe string comparison)
+    // function compareDate($a, $b){
+    //     if ($a['post_date'] == $b['post_date']) {
+    //         return 0;
+    //     }
+    //     return ($a['post_date'] > $b['post_date']) ? -1 : 1;
+    // }
 
-    }
-
+    function compareDate($a, $b) { return -strcmp($a['post_date'], $b['post_date']); }
     usort($spaceBlogArray, 'compareDate');
 
     //display posts in desc order: SORT_DESC
@@ -32,7 +30,7 @@
             foreach ($spaceBlogArray as $article){
                 $date = date("F j, Y", $article['post_date']);
                 //I need last row because the last article does not have border
-                $lastRow = ++$index === count($spaceBlogArray);
+                $lastRow = ++$index === count($spaceBlogArray);//increment index by 1 and check if this is the last element of array,if yes, lastRow true
 
         
                 echo "<h2>$article[title]</h2>" . "<em>$date</em>" ."<p>by $article[author]</p>" ."<p>$article[content]</p>" . "<strong>Categorized in: </strong>";
